@@ -10,7 +10,7 @@ function App() {
   // Fetch tasks from the backend
   const fetchTasks = async () => {
     try {
-      const response = await axios.get('http://localhost:3000/api/redayit_dev_todos');
+      const response = await axios.get('http://redaybe.local/api/redayit_dev_todos');
       setTasks(response.data);
     } catch (error) {
       console.error('Error fetching tasks:', error);
@@ -20,7 +20,7 @@ function App() {
   // Create a new task
   const createTask = async () => {
     try {
-      await axios.post('http://localhost:3000/api/redayit_dev_todos', newTask);
+      await axios.post('http://redaybe.local/api/redayit_dev_todos', newTask);
       fetchTasks(); // Refresh tasks list
       setNewTask({ title: '', description: '' }); // Clear input fields
     } catch (error) {
@@ -40,7 +40,7 @@ function App() {
   // Delete a task
   const deleteTask = async (id) => {
     try {
-      await axios.delete(`http://localhost:3000/api/redayit_dev_todos/${id}`);
+      await axios.delete(`http://redaybe.local/api/redayit_dev_todos/${id}`);
       fetchTasks(); // Refresh tasks list
     } catch (error) {
       console.error('Error deleting task:', error);
@@ -50,7 +50,7 @@ function App() {
   // Toggle task completion status
   const toggleCompletion = async (id, completed) => {
     try {
-      await axios.put(`http://localhost:3000/api/redayit_dev_todos/${id}`, { completed: !completed });
+      await axios.put(`http://redaybe.local/api/redayit_dev_todos/${id}`, { completed: !completed });
       fetchTasks(); // Refresh tasks list
     } catch (error) {
       console.error('Error toggling task completion:', error);
@@ -61,7 +61,7 @@ function App() {
   const handleCompletionChange = async (id, event) => {
     const newStatus = event.target.value === 'completed';
     try {
-      await axios.put(`http://localhost:3000/api/redayit_dev_todos/${id}`, { completed: newStatus });
+      await axios.put(`http://redaybe.local/api/redayit_dev_todos/${id}`, { completed: newStatus });
       fetchTasks(); // Refresh tasks list
     } catch (error) {
       console.error('Error updating task status:', error);
